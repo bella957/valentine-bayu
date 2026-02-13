@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Surprise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #ffb3ba, #ffdfba); /* Gradien pink lembut */
+            color: #e91e63; /* Pink gelap untuk teks */
+            padding: 50px;
+            margin: 0;
+        }
+        h1 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        p {
+            font-size: 1.2em;
+        }
+        .buttons {
+            margin-top: 30px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            margin: 10px;
+            border: 3px solid #e91e63; /* Border pink */
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            transform: scale(1.1);
+        }
+        #yes {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #no {
+            background-color: #f44336;
+            color: white;
+            position: relative;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 1.5em;
+            display: none;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #e91e63;
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy Valentine's Day, Bayu Nugroho! 💖</h1>
+    <p>Aku punya pertanyaan penting buat kamu, Bayu...</p>
+    <p>Kamu sayang sama aku engga?</p>
+    
+    <div class="buttons">
+        <button id="yes">Yes</button>
+        <button id="no">No</button>
+    </div>
+    
+    <div class="message" id="success">Yay! Aku cinta kamu, Bayu! 😘</div>
+    <div class="message" id="fail">Haha, kamu nggak bisa klik No, Bayu! 😏</div>
+
+    <script>
+        const noButton = document.getElementById('no');
+        const yesButton = document.getElementById('yes');
+        const successMessage = document.getElementById('success');
+        const failMessage = document.getElementById('fail');
+
+        // Fungsi untuk membuat tombol "No" bergerak acak
+        function moveNoButton() {
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 100);
+            noButton.style.left = x + 'px';
+            noButton.style.top = y + 'px';
+        }
+
+        // Event listener untuk tombol "No" (bergerak saat mouseover atau click)
+        noButton.addEventListener('mouseover', moveNoButton);
+        noButton.addEventListener('click', function() {
+            moveNoButton();
+            failMessage.style.display = 'block';
+            setTimeout(() => failMessage.style.display = 'none', 2000); // Sembunyikan pesan setelah 2 detik
+        });
+
+        // Event listener untuk tombol "Yes"
+        yesButton.addEventListener('click', function() {
+            successMessage.style.display = 'block';
+            noButton.style.display = 'none'; // Sembunyikan tombol "No" setelah "Yes" diklik
+        });
+    </script>
+</body>
+</html>
